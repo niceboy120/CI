@@ -108,7 +108,15 @@ class User extends Controller {
 	
         //end of function
 	}
-
+        
+        /*
+         * Pour ajouter  une séance à un cahier de texte
+         */
+        function ajoutAgenda()
+        {
+            $this->Agenda_model->addAgenda();
+            redirect('user');
+        }
        
        ///////////////////Pour ajouter une seance à un emploi
         function ajoutEmploi()
