@@ -25,6 +25,7 @@ class User extends Controller {
         function index()
 	{
 
+            //$this->load->model('Cahier_model','',TRUE);
             $data['matiere'] = $this->Matiere_model->getAllMatieres();
             for($i=0;$i<count($data['matiere']);$i++)
             {
@@ -117,7 +118,19 @@ class User extends Controller {
             $this->Agenda_model->addAgenda();
             redirect('user');
         }
-       
+       ////////////////////Modifier une séance dans un emploi 
+        function editAgenda()
+        {
+            $data['id_agenda']=$this->uri->rsegment(3);
+           // $data['plage']=$this->Plage_model->getAllPlage();
+            //$data['classes']=$this->Classe_model->getAllClasses();
+            $this->load->view('user/editAgenda',$data);
+        }
+        function editA()
+        {
+            $this->Agenda_model->editAgenda();
+            redirect('user');
+        }
        ///////////////////Pour ajouter une seance à un emploi
         function ajoutEmploi()
         {

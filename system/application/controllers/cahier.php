@@ -13,7 +13,14 @@
  */
 class Cahier extends Controller{
 
+    function __construct()
+	{
+		parent::Controller();
+                $this->load->model('Cahier_model','',TRUE);
+                //$this->output->enable_profiler(TRUE);
+	}
     function index(){
+        
         if($this->input->post('matiere',TRUE)){
             $this->session->set_userdata('matiere', $this->input->post('matiere',TRUE));
             $data['classe']=$this->session->userdata('classe');
