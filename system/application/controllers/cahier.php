@@ -16,7 +16,6 @@ class Cahier extends Controller{
     function __construct()
 	{
 		parent::Controller();
-                $this->load->model('Cahier_model','',TRUE);
                 //$this->output->enable_profiler(TRUE);
 	}
     function index(){

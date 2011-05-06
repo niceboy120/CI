@@ -46,19 +46,19 @@ $infoUser = $this->session->userdata('InfoUser');
             <td>ملاحظات</td>
         </tr>
         <?php
-        //$this->load->model('Agenda_model', '', TRUE);
-        $agendaProf = $this->Cahier_model->getAgendaProf($infoUser['id']);
-        for ($t = 0; $t < count($agendaProf); $t++) {
+       // 
+       // $agendaProf = $this->Cahier_model->getAgendaProf($infoUser['id']);
+        //for ($t = 0; $t < count($agendaProf); $t++) {
             ?>
             <tr>
-                <td><?php echo $this->Classe_model->getClasseNom($agendaProf[$t]['id_classe']) ?></td>
+                <td><?php //echo $this->Classe_model->getClasseNom($agendaProf[$t]['id_classe']) ?></td>
                 <td></td>
                 <td></td>
                 <td></td>                
 
             </tr>
             <?php
-       }
+       //}
         ?>
 
     </table>

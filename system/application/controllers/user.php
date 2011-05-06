@@ -19,6 +19,7 @@ class User extends Controller {
 	{
 		parent::Controller();
                 //$this->output->enable_profiler(TRUE);
+                
 	}
 
 	/////index function
