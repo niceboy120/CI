@@ -15,51 +15,36 @@ $infoUser = $this->session->userdata('InfoUser');
     ?>
 </p>
 
-<table class="display" id="cahiertable" width="100%">
+
+
+<table  width="100%" class="lire_bordure" id="cahiertable" >
     <thead>
-        <tr>
-            <th  style="font-size: 12px;text-align:center; vertical-align: middle;">التاريخ</th>
-            <th style="text-align:center; vertical-align: middle;">المحتوى</th>
-            <th style="text-align:center; vertical-align: middle;">ملاحظات</th>
+        <tr class="lire_cellule_4">
+            <th>القسم</th>
+            <th>التاريخ</th>
+            <th>المحتوى</th>
+            <th>ملاحظات</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-            <td>etc</td>
-        </tr>
-        <tr>
-            <td>Row 2 Data 1</td>
-            <td>Row 2 Data 2</td>
-            <td>etc</td>
-        </tr>
-    </tbody>
-</table>
-
-<center>               
-    <table width="90%" align="center" cellpadding="0" cellspacing="0" class="lire_bordure">
-        <tr class="lire_cellule_4">
-            <td>القسم</td>
-            <td>التاريخ</td>
-            <td>المحتوى</td>
-            <td>ملاحظات</td>
-        </tr>
         <?php
-       // 
-       // $agendaProf = $this->Cahier_model->getAgendaProf($infoUser['id']);
-        //for ($t = 0; $t < count($agendaProf); $t++) {
+        // 
+        $agendaProf = $this->Agenda_model->getAgendaProf($infoUser['id']);
+        for($i=0;$i<25;$i++)
+        {
+        for ($t = 0; $t < count($agendaProf); $t++) {
             ?>
             <tr>
-                <td><?php //echo $this->Classe_model->getClasseNom($agendaProf[$t]['id_classe']) ?></td>
-                <td></td>
-                <td></td>
-                <td></td>                
+                <td><?php echo $this->Classe_model->getClasseNom($agendaProf[$t]['id_classe']) ?></td>
+                <td><?php echo $agendaProf[$t]['jour']; ?></td>
+                <td><?php echo $agendaProf[$t]['activite'] ?></td>
+                <td><?php echo $agendaProf[$t]['remarque'] ?></td>                
 
             </tr>
             <?php
-       //}
+        }}
         ?>
+    </tbody>
+</table>
 
-    </table>
-</center>
+²
