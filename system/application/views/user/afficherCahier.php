@@ -17,9 +17,9 @@ $infoUser = $this->session->userdata('InfoUser');
 
 
 
-<table  width="100%" class="lire_bordure" id="cahiertable" >
+<table  id="mytable" width="100%" class="lire_bordure" >
     <thead>
-        <tr class="lire_cellule_4">
+        <tr >
             <th>القسم</th>
             <th>التاريخ</th>
             <th>المحتوى</th>
@@ -46,5 +46,3 @@ $infoUser = $this->session->userdata('InfoUser');
         ?>
     </tbody>
 </table>
-
-²
