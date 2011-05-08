@@ -19,7 +19,7 @@
                 <?php $this->load->view('user/informationsPerso'); ?>
             </div>
             <div id="tabs-2">
-
+                <?php $this->load->view('user/ajouterAgenda'); ?>
             </div>
             <div id="tabs-3">
                 <?php $this->load->view('user/afficherCahier'); ?>

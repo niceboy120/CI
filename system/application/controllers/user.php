@@ -17,7 +17,7 @@ class User extends Controller {
         var $data =array();
         function __construct()
 	{
-		parent::Controller();
+		parent::Controller();                		
                 //$this->output->enable_profiler(TRUE);
                 
 	}
@@ -26,7 +26,6 @@ class User extends Controller {
         function index()
 	{
 
-            //$this->load->model('Cahier_model','',TRUE);
             $data['matiere'] = $this->Matiere_model->getAllMatieres();
             for($i=0;$i<count($data['matiere']);$i++)
             {
@@ -34,11 +33,20 @@ class User extends Controller {
             }
             $data['matieres']=$mat;
             $data['classes']=$this->Classe_model->getAllClasses();
+            $base_url = site_url('user/user/');
+            $config['base_url'] = $base_url;
+            $config['per_page'] = '10';
+            $config['first_link'] = 'الأول';
+            $config['last_link'] = 'الأخير';
+            $config['full_tag_open'] = '<p>';
+            $config['full_tag_close'] = '</p>';
 
             if($this->session->userdata('login')==TRUE)
             {
-                $data['emploi']=$this->Emploi_model->getEmploiProf($this->session->userdata('id_user'));
+                $data['id_user']=$this->session->userdata('id_user');
+                $data['emploi']=$this->Emploi_model->getEmploiProf($data['id_user']);
                 $data['plage']=$this->Plage_model->getAllPlage();
+                
                 if($this->session->userdata('isadmin')==TRUE)
                 {
                     $this->session->set_userdata('isuser', FALSE);
@@ -46,6 +54,11 @@ class User extends Controller {
                 }else if($this->session->userdata('isuser')==TRUE)
                 {
                     $this->session->set_userdata('isadmin', FALSE);
+                    
+                   $config['total_rows'] = count($this->Agenda_model->getAgendaProf($data['id_user']));
+                    $this->pagination->initialize($config);
+                    $data['agendaProf'] = $this->Agenda_model->getAgendaProfL($data['id_user'],$config['per_page'],(int)$this->uri->rsegment(3));
+                          
                     $this->load->vars($data);
                     $this->load->view('user/user');
                 }
@@ -70,7 +83,7 @@ class User extends Controller {
                       $this->session->set_userdata('login', TRUE);
                       $this->session->set_userdata('id_user',$data['t']['0']->id);
                       $this->session->set_userdata('id_user_matiere',$data['t']['0']->id_matiere);
-                      $data['id_user']=$this->session->userdata('id_prof');
+                      $data['id_user']=$this->session->userdata('id_user');
                       $data['emploi']=$this->Emploi_model->getEmploiProf($this->session->userdata('id_user'));
                       $data['plage']=$this->Plage_model->getAllPlage();
                       if($data['t']['0']->is_admin)
@@ -84,6 +97,12 @@ class User extends Controller {
                       }else{
                           $this->session->set_userdata('isuser', TRUE);
                           $this->session->set_userdata('isadmin', FALSE);
+                          
+                          $config['total_rows'] = count($this->Agenda_model->getAgendaProf($this->session->userdata('id_user')));
+                          $this->pagination->initialize($config);
+                          $data['agendaProf'] = $this->Agenda_model->getAgendaProfL($this->session->userdata('id_user'),$config['per_page'],$this->uri->rsegment(3));
+                          
+                          
                           $this->load->vars($data);
                           $this->load->view('user/user');
                       }
@@ -111,6 +130,22 @@ class User extends Controller {
         //end of function
 	}
         
+        
+        function page()
+        {
+            $config['base_url'] = base_url().'/user/index/';
+            $config['per_page'] = '15';
+            $config['first_link'] = 'الأول';
+            $config['last_link'] = 'الأخير';
+            $config['full_tag_open'] = '<p>';
+            $config['full_tag_close'] = '</p>';
+            
+            $config['total_rows'] = $this->Agenda_model->getAgendaProf($infoUser['id'])*60;
+            $this->pagination->initialize($config);
+            
+            $data['agendaProf'] = $this->Agenda_model->getAgendaProf($infoUser['id'],$config['per_page'],$this->uri->segment(3));
+            
+        }
         /*
          * Pour ajouter  une séance à un cahier de texte
          */
@@ -167,8 +202,7 @@ class User extends Controller {
         }
         function user()
         {
-            if($this->session->userdata('isuser')==TRUE)
-                    $this->load->view('user/user');
+            redirect('user');
             
         }
         function logout()

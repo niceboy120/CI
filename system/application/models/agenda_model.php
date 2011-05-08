@@ -56,6 +56,9 @@ class Agenda_model extends Model {
 		return $data;        
     }
     
+    /*
+     * Avoir le cahier de texte d'un prof
+     */
     function getAgendaProf($id=0) {
 		$data = array();
                 $this->db->where('id_prof', $id);
@@ -70,6 +73,25 @@ class Agenda_model extends Model {
 		$Q->free_result();
 		return $data;
    }
+   /*
+     * Avoir le cahier de texte d'un prof
+     */
+    function getAgendaProfL($id=0,$num= NULL, $offset = NULL) {
+		$data = array();
+                $this->db->where('id_prof', $id);
+                $this->db->order_by("jour", "asc");
+                $this->db->order_by("heureDebut", "asc");
+                $this->db->limit($num, $offset);
+		$Q = $this->db->get('agenda');
+		if ($Q->num_rows()>0){
+			foreach ($Q->result_array() as $row){
+				$data[]=$row;
+			}
+		}
+		$Q->free_result();
+		return $data;
+   }
+   
    /*
     * Remplir le cahier de texte d'une classe
     */
