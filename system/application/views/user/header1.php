@@ -15,35 +15,7 @@
         <script src='<?php echo base_url(); ?>system/js/jquery-1.5.1.min.js' type="text/javascript"></script>
         <script src='<?php echo base_url(); ?>system/js/jquery-ui-1.8.12.custom.min.js' type="text/javascript"></script>
         <script src="j<?php echo base_url(); ?>system/js/jquery.contact.js" type="text/javascript"></script>
-        <script src='<?php echo base_url(); ?>system/js/jquery.dataTables.min.js' type="text/javascript"></script><script type="text/javascript" src="<?php echo base_url(); ?>system/js/tinymce/jquery.tinymce.js"></script>
-
-        <script type="text/javascript">
-            $(function(){$("textarea.tinymce").tinymce({
-                    // Location of TinyMCE script
-                    script_url : "<?php echo base_url(); ?>system/js/tinymce/tiny_mce.js",
- 
-                    // General options
-                    theme : "advanced",
-                    plugins : "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
- 
-                    // Theme options
-                    theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
-                    theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
-                    theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
-                    theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak",
-                    theme_advanced_toolbar_location : "top",
-                    theme_advanced_toolbar_align : "left",
-                    theme_advanced_statusbar_location : "bottom",
-                    theme_advanced_resizing : true,
- 
-                    // Drop lists for link/image/media/template dialogs
-                    template_external_list_url : "lists/template_list.js",
-                    external_link_list_url : "lists/link_list.js",
-                    external_image_list_url : "lists/image_list.js",
-                    media_external_list_url : "lists/media_list.js"
-                });});
-        </script>
-
+        <script type="text/javascript" src="<?php echo $base_url; ?>system/js/tinymce/jquery.tinymce.js"></script>
         <script type="text/javascript">
             $(function() {
                 $("#tabs").tabs();
@@ -166,31 +138,7 @@
                 fctShow();
             }
         </script>
-        <script type="text/javascript" charset="utf-8">
-            $(document).ready(function() {
-                $('#cahiertable').dataTable({
-                    "oLanguage":{ "sProcessing":   "جاري التحميل...",
-                        "sLengthMenu":   "أظهر مدخلات _MENU_",
-                        "sZeroRecords":  "لم يُعثر على أية سجلات",
-                        "sInfo":         "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
-                        "sInfoEmpty":    "يعرض 0 إلى 0 من أصل 0 سجلّ",
-                        "sInfoFiltered": "(منتقاة من مجموع _MAX_ مدخل)",
-                        "sInfoPostFix":  "",
-                        "sSearch":       "ابحث:",
-                        "sUrl":          "",
-                        "oPaginate": {
-                            "sFirst":    "الأول",
-                            "sPrevious": "السابق",
-                            "sNext":     "التالي",
-                            "sLast":     "الأخير"
-                        }
-                    },
-                    "bJQueryUI": true,
-                    "sPaginationType": "full_numbers"
-                } );
-                                        
-            } );
-        </script>
+        
         <script language="javascript" type="text/javascript" src="<?php echo base_url(); ?>system/js/calendrier.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>system/js/CP_Class.js"></script>
 

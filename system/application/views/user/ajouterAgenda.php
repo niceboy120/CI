@@ -1,4 +1,4 @@
-
+<?php echo $this->tinyMce;?>
 <?php
 /*
  * To change this template, choose Tools | Templates
@@ -71,8 +71,7 @@
         <label for="form_activite"><span>المحتوى:</span>
             &nbsp;
         </label>
-        <br />
-            <textarea id="activite"  style="width:98%"></textarea>
+        <div align="center"><textarea id="activite"  style="width:98%;"></textarea></div>
     </fieldset>
     <p>
         <input type="submit" name="submit" value="إضافة الحصة"/>
