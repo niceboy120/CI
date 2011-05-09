@@ -40,16 +40,30 @@
                 ?>
             </select>
         </label>
-        <label for="form_seance"><span>الحصـــة     :</span>
+        <label for="form_seance"><span>بداية الحصـــة     :</span>
             &nbsp;
-            <select id="form_seance" name="seance">
+            <select id="form_seance" name="heureDebut">
 
                 <?php
                 foreach ($plage as $k1 => $list) {
                     $heure_debut = $list['h1'] . "H" . $list['mn1'] . "mn";
+                    echo "<OPTION value='" . $heure_debut . "'>";
+                    echo  $heure_debut ;
+                    echo "</OPTION>";
+                }
+                ?>
+            </select>
+
+        </label>
+        <label for="form_seance"><span>نهاية الحصـــة     :</span>
+            &nbsp;
+            <select id="form_seance" name="heureFin">
+
+                <?php
+                foreach ($plage as $k1 => $list) {
                     $heure_fin = $list['h2'] . "H" . $list['mn2'] . "mn";
-                    echo "<OPTION value='" . $list['id'] . "'>";
-                    echo "من " . $heure_debut . " إلى " . $heure_fin;
+                    echo "<OPTION value='" . $heure_fin . "'>";
+                    echo  $heure_fin;
                     echo "</OPTION>";
                 }
                 ?>
@@ -58,15 +72,15 @@
         </label>
         <label for="form_titreActivite"><span>عنوان الحصة:</span>
             &nbsp;
-            <input type="text" id="titreActivite"></input>
+            <input type="text" id="titreActivite" name="titreActivite"></input>
         </label>
         <label for="form_typeActivite"><span>نوع الحصة:</span>
             &nbsp;
-            <select id="form_typeActivite" name="typeActivite">
+            <select id="form_typeActivite" name="idtypeActivite">
 
                 <?php
                 foreach ($typeactivite as $k1 => $list) {
-                    echo "<OPTION value='   " . $list['nom'] . "'>";
+                    echo "<OPTION value='   " . $list['id'] . "'>";
                     echo $list['nom'];
                     echo "</OPTION>";
                 }
@@ -76,7 +90,7 @@
         <label for="form_activite"><span>المحتوى:</span>
             &nbsp;
         </label>
-        <div align="center"><textarea id="activite"  style="width:98%;"></textarea></div>
+        <div align="center"><textarea id="activite" name="activite" style="width:98%;"></textarea></div>
     </fieldset>
     <p>
         <input type="submit" name="submit" value="إضافة الحصة"/>

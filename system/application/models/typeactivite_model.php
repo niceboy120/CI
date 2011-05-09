@@ -31,6 +31,19 @@ class Typeactivite_model extends Model {
 		$Q->free_result();
 		return $data;
    }
+   function getTypeID($nom="")
+       {
+           $query = $this->db->get_where('type_activite', array('nom' => $nom), 1);
+		foreach ($query->result() as $row)
+                {
+                    $data['c'][]= $row;
+
+                }
+                if(!isset ($data))
+                     $this->session->set_userdata('opType', 'لا يوجد نوع بهذا الإسم');
+                else
+                    return $data['c']['0']->id;
+       }
 
 }
 ?>
