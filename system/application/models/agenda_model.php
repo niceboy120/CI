@@ -122,13 +122,12 @@ class Agenda_model extends Model {
               'id_classe' => $this->input->post('classe', true),
               'id_prof' => $this->session->userdata('id_user'),
               'id_type_activite' => $idtypeactivite,
-              'id_matiere' => $this->session->userdata('id_user_matiere'),
               'jour' => $this->input->post('jour', true),
               'heureDebut' => $this->input->post('heureDebut', true),
               'heureFin' => $this->input->post('heureFin', true),
               'titreActivite' => $this->input->post('titreActivite', true),
-              'travailAfaire'=> $travailAfaire,
               'activite' => $this->input->post('activite', true),
+              'travailAfaire'=> $travailAfaire,
               'remarque' => $this->input->post('remarque', true)
               
             );

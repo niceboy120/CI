@@ -108,7 +108,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('User_model','Classe_model','Matiere_model', 'Emploi_model','Plage_model','Agenda_model');
+$autoload['model'] = array('User_model','Classe_model','Matiere_model', 'Emploi_model','Plage_model','Agenda_model','Typeactivite_model');
 
 
 

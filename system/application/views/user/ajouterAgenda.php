@@ -1,10 +1,9 @@
-<?php echo $this->tinyMce;?>
+<?php echo $this->tinyMce; ?>
 <?php
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 ?>
 <form  method="post" class="monForm" name="form1" action="<?php echo base_url(); ?>user/ajoutAgenda">
     <fieldset>
@@ -26,8 +25,13 @@
             &nbsp;
             <select id="form_jour" name="jour">
                 <?php
-                $tab[1] = 'الإثنين'; $tab[2] = 'الثلاثاء';$tab[3] = 'الأربعاء'; $tab[4] = 'الخميس'; $tab[5] = 'الجمعة'; $tab[6] = 'السبت';
-                
+                $tab[1] = 'الإثنين';
+                $tab[2] = 'الثلاثاء';
+                $tab[3] = 'الأربعاء';
+                $tab[4] = 'الخميس';
+                $tab[5] = 'الجمعة';
+                $tab[6] = 'السبت';
+
                 for ($j = 1; $j < 7; $j++) {
                     echo "<OPTION value='" . $tab[$j] . "'>";
                     echo $tab[$j];
@@ -58,11 +62,12 @@
         </label>
         <label for="form_typeActivite"><span>نوع الحصة:</span>
             &nbsp;
-             <select id="form_typeActivite" name="typeActivite">
+            <select id="form_typeActivite" name="typeActivite">
 
                 <?php
-                foreach ($typeActivite as $k1 => $list) {
-                    echo "<OPTION value='" . $list['nom'] . "'>";
+                foreach ($typeactivite as $k1 => $list) {
+                    echo "<OPTION value='   " . $list['nom'] . "'>";
+                    echo $list['nom'];
                     echo "</OPTION>";
                 }
                 ?>
