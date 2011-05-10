@@ -112,11 +112,8 @@ class Agenda_model extends Model {
         
         
         //////////////////////////////////////////////////////////////
-        $contenuTravailAfaire = $this->input->post('contenuTravailAfaire');
-        if (isset($contenuTravailAfaire))
-            $travailAfaire = 1;
-        else
-            $travailAfaire=0;
+        $TravailAfaire = $this->input->post('TravailAfaire');
+        
 
         $data = array(
             'id' => 0,

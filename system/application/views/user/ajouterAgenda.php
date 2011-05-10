@@ -56,7 +56,7 @@
                 foreach ($plage as $k1 => $list) {
                     $heure_debut = $list['h1'] . "H" . $list['mn1'] . "mn";
                     echo "<OPTION value='" . $heure_debut . "'>";
-                    echo  $heure_debut ;
+                    echo $heure_debut;
                     echo "</OPTION>";
                 }
                 ?>
@@ -71,7 +71,7 @@
                 foreach ($plage as $k1 => $list) {
                     $heure_fin = $list['h2'] . "H" . $list['mn2'] . "mn";
                     echo "<OPTION value='" . $heure_fin . "'>";
-                    echo  $heure_fin;
+                    echo $heure_fin;
                     echo "</OPTION>";
                 }
                 ?>
@@ -97,16 +97,22 @@
         </label>
         <label for="form_activite"><span>المحتوى:</span>
             &nbsp;
-            
+
         </label>
         <div align="center"><textarea id="activite" name="activite" style="width:98%;"></textarea></div>
-        <label for="form_remarque"><span>ملاحظات:</span>
+        <label for="form_travailAfaire"><span>عمل للإنجاز في المنزل :</span>
             &nbsp;
-            
+
         </label>
-        <div align="center"><textarea id="remarque" name="remarque" style="width:98%;"></textarea></div>
-    </fieldset>
-    <p>
-        <input type="submit" name="submit" value="إضافة الحصة"/>
-    </p>
+        <div align="center"><textarea id="travailAfaire" name="travailAfaire" style="width:98%;"></textarea></div>
+    
+    <label for="form_remarque"><span>ملاحظات عامة:</span>
+        &nbsp;
+
+    </label>
+    <div align="center"><textarea id="remarque" name="remarque" style="width:98%;"></textarea></div>
+</fieldset>
+<p>
+    <input type="submit" name="submit" value="إضافة الحصة"/>
+</p>
 </form>
