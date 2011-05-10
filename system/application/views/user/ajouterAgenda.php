@@ -5,6 +5,14 @@
  * and open the template in the editor.
  */
 ?>
+<p class="erreur">
+    <?php
+    if ($this->session->userdata('opAgenda')) {
+        echo $this->session->userdata('opAgenda');
+        $this->session->set_userdata('opAgenda', null);
+    }
+    ?>
+</p>
 <form  method="post" class="monForm" name="form1" action="<?php echo base_url(); ?>user/ajoutAgenda">
     <fieldset>
         <legend>إضافة حصة جديدة في دفتر النصوص :</legend>
@@ -89,8 +97,14 @@
         </label>
         <label for="form_activite"><span>المحتوى:</span>
             &nbsp;
+            
         </label>
         <div align="center"><textarea id="activite" name="activite" style="width:98%;"></textarea></div>
+        <label for="form_remarque"><span>ملاحظات:</span>
+            &nbsp;
+            
+        </label>
+        <div align="center"><textarea id="remarque" name="remarque" style="width:98%;"></textarea></div>
     </fieldset>
     <p>
         <input type="submit" name="submit" value="إضافة الحصة"/>

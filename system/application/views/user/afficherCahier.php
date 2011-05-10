@@ -6,14 +6,6 @@
 $infoUser = $this->session->userdata('InfoUser');
 ?>
 
-<p class="erreur">
-    <?php
-    if ($this->session->userdata('opAgenda')) {
-        echo $this->session->userdata('opAgenda');
-        $this->session->set_userdata('opAgenda', null);
-    }
-    ?>
-</p>
 
 
 <?php 
