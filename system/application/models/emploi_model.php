@@ -35,6 +35,26 @@ class Emploi_model extends Model {
 		$Q->free_result();
 		return $data;
    }
+   /*
+    * 
+    */
+   function getClassesProf($idprof)
+   {
+       $data=array();
+       $this->db->select('id_classe');
+       $this->db->distinct();
+       $this->db->orderby('id_classe','asc');
+       $query = $this->db->get_where('emploi', array('id_prof' => $idprof));
+	if($query->num_rows()>0)
+        {
+            foreach ($query->result() as $row)
+                 $data[]= $row;
+            return $data;
+        }else
+           $this->session->set_userdata('opClasse', 'لايدرس هذا الأستاذ أي قسم');
+        
+            
+   }
    /////Ajout d'une séance dans l'emploi du prof
    function addEmploi()
         {
@@ -92,19 +112,19 @@ class Emploi_model extends Model {
               'id_matiere' => $this->session->userdata('id_user_matiere'),
               'jour_semaine' => $this->input->post('jour', true),
               'id_plage' => $id_plage,
-               'heure_debut' => $heure_debut,
-                'heure_fin' => $heure_fin
-            );
-            $this->db->where('id', $this->input->post('id', true));
-           $this->db->update('emploi', $data);
-           $this->session->set_userdata('opEmploi','تم تغيير المعلومات بنجاح');
-        }
-        function removeEmploi($id=0)
-        {
-            $this->db->delete('emploi', array('id' => $id), 1);
-           $this->session->set_userdata('opEmploi','تم حذف الحصة بنجاح');
-            
+            'heure_debut' => $heure_debut,
+            'heure_fin' => $heure_fin
+        );
+        $this->db->where('id', $this->input->post('id', true));
+        $this->db->update('emploi', $data);
+        $this->session->set_userdata('opEmploi', 'تم تغيير المعلومات بنجاح');
+    }
 
-        }
+    function removeEmploi($id=0) {
+        $this->db->delete('emploi', array('id' => $id), 1);
+        $this->session->set_userdata('opEmploi', 'تم حذف الحصة بنجاح');
+    }
+
 }
+
 ?>

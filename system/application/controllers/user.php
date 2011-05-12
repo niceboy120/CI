@@ -83,7 +83,7 @@ class User extends Controller {
                 $config['total_rows'] = count($this->Agenda_model->getAgendaProf($data['id_user']));
                 $this->pagination->initialize($config);
                 $data['agendaProf'] = $this->Agenda_model->getAgendaProfL($data['id_user'], $config['per_page'], (int) $this->uri->rsegment(3));
-
+                $data['classesProf']=$this->Emploi_model->getClassesProf($data['id_user']);
                 $this->load->vars($data);
                 $this->load->view('user/user');
             }
@@ -104,6 +104,7 @@ class User extends Controller {
                 $this->session->set_userdata('id_user_matiere', $data['t']['0']->id_matiere);
                 $data['id_user'] = $this->session->userdata('id_user');
                 $data['emploi'] = $this->Emploi_model->getEmploiProf($this->session->userdata('id_user'));
+                $data['classesProf']=$this->Emploi_model->getClassesProf($this->session->userdata('id_user'));
                 $data['plage'] = $this->Plage_model->getAllPlage();
                 if ($data['t']['0']->is_admin) {
                     $this->session->set_userdata('isadmin', TRUE);

@@ -19,12 +19,15 @@
 
         <label for="form_class"><span>القسم        :</span>
             &nbsp;
+            
             <select id="form_class" name="classe">
+                <OPTION value='none'>المرجو اختيار القسم....</OPTION>
                 <?php
-                foreach ($classes as $k1 => $list) {
-                    echo "<OPTION value='" . $list['id'] . "'>";
-                    echo $list['nom'];
+                foreach ($classesProf as $k1) {
+                    echo "<OPTION value='" . $k1->id_classe . "'>";
+                    echo $this->Classe_model->getClasseNom($k1->id_classe);
                     echo "</OPTION>";
+                    
                 }
                 ?>
             </select>
