@@ -36,7 +36,26 @@ class Emploi_model extends Model {
 		return $data;
    }
    /*
-    * 
+    * renvoie l'emploi d'une classe pour un prof
+    */
+   function getEmploiClasseProf($idclasse,$idprof) {
+		$data = array();
+                //$sql="select * from emploi where id_prof=$id";
+                $array = array('id_prof' => $idprof, 'id_classe' => $idclasse);
+                $this->db->where($array);
+                $this->db->order_by("jour_semaine", "asc");
+                $this->db->order_by("id_plage", "asc");
+		$Q = $this->db->get('emploi');
+		if ($Q->num_rows()>0){
+			foreach ($Q->result_array() as $row){
+				$data[]=$row;
+			}
+		}
+		$Q->free_result();
+		return $data;
+   }
+   /*
+    * renvoie les classes affecté à un prof
     */
    function getClassesProf($idprof)
    {

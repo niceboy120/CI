@@ -5,6 +5,19 @@
  * and open the template in the editor.
  */
 ?>
+<script language="Javascript">
+$(document).ready(function() {
+    $('#form_classe').change(function() {
+ 
+        var msg = $('#form_classe').val();
+        alert(msg);
+        $.post("<?= site_url('message/add') ?>", {message: msg}, function() {
+            $('#content').load("<?= site_url('message/view/ajax') ?>");
+            $('#message').val('');
+        });
+    });
+});
+</script>
 <p class="erreur">
     <?php
     if ($this->session->userdata('opAgenda')) {
@@ -20,7 +33,7 @@
         <label for="form_class"><span>القسم        :</span>
             &nbsp;
             
-            <select id="form_class" name="classe">
+            <select id="form_classe" name="classe">
                 <OPTION value='none'>المرجو اختيار القسم....</OPTION>
                 <?php
                 foreach ($classesProf as $k1) {
@@ -51,6 +64,7 @@
                 ?>
             </select>
         </label>
+        <div id="joursClasse"><?php $this->load->view('joursClasse') ?></div>
         <label for="form_seance"><span>بداية الحصـــة     :</span>
             &nbsp;
             <select id="form_seance" name="heureDebut">
