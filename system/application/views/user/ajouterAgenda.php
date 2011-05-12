@@ -1,23 +1,6 @@
 <?php echo $this->tinyMce; ?>
-<?php
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-?>
-<script language="Javascript">
-$(document).ready(function() {
-    $('#form_classe').change(function() {
- 
-        var msg = $('#form_classe').val();
-        alert(msg);
-        $.post("<?= site_url('message/add') ?>", {message: msg}, function() {
-            $('#content').load("<?= site_url('message/view/ajax') ?>");
-            $('#message').val('');
-        });
-    });
-});
-</script>
+
+
 <p class="erreur">
     <?php
     if ($this->session->userdata('opAgenda')) {
@@ -45,56 +28,10 @@ $(document).ready(function() {
                 ?>
             </select>
         </label>
-        <label for="form_jour"><span>اليوم        :</span>
-            &nbsp;
-            <select id="form_jour" name="jour">
-                <?php
-                $tab[1] = 'الإثنين';
-                $tab[2] = 'الثلاثاء';
-                $tab[3] = 'الأربعاء';
-                $tab[4] = 'الخميس';
-                $tab[5] = 'الجمعة';
-                $tab[6] = 'السبت';
-
-                for ($j = 1; $j < 7; $j++) {
-                    echo "<OPTION value='" . $tab[$j] . "'>";
-                    echo $tab[$j];
-                    echo "</OPTION>";
-                }
-                ?>
-            </select>
-        </label>
-        <div id="joursClasse"><?php $this->load->view('joursClasse') ?></div>
-        <label for="form_seance"><span>بداية الحصـــة     :</span>
-            &nbsp;
-            <select id="form_seance" name="heureDebut">
-
-                <?php
-                foreach ($plage as $k1 => $list) {
-                    $heure_debut = $list['h1'] . "H" . $list['mn1'] . "mn";
-                    echo "<OPTION value='" . $heure_debut . "'>";
-                    echo $heure_debut;
-                    echo "</OPTION>";
-                }
-                ?>
-            </select>
-
-        </label>
-        <label for="form_seance"><span>نهاية الحصـــة     :</span>
-            &nbsp;
-            <select id="form_seance" name="heureFin">
-
-                <?php
-                foreach ($plage as $k1 => $list) {
-                    $heure_fin = $list['h2'] . "H" . $list['mn2'] . "mn";
-                    echo "<OPTION value='" . $heure_fin . "'>";
-                    echo $heure_fin;
-                    echo "</OPTION>";
-                }
-                ?>
-            </select>
-
-        </label>
+        
+        <div id="joursClasse"></div>
+        
+        <div id="heureSeance"></div>
         <label for="form_titreActivite"><span>عنوان الحصة:</span>
             &nbsp;
             <input type="text" id="titreActivite" name="titreActivite"></input>
@@ -133,3 +70,48 @@ $(document).ready(function() {
     <input type="submit" name="submit" value="إضافة الحصة"/>
 </p>
 </form>
+
+
+<script language="Javascript">
+$(document).ready(function() {
+    $('#form_classe').change(function() {
+ 
+        var my_data={
+            id_classe : $('#form_classe').val()
+            
+        };
+       
+       
+        $.ajax({
+            url:"<?php echo site_url('user/ajaxsearchJours');?>",
+            type:"POST",
+            data:my_data,
+            success: function(msg){
+                $('#joursClasse').html(msg);
+                
+            }
+            
+        });
+    });
+    
+    $('#form_jour').change(function() {
+ 
+        var my_data1={
+            joursemaine : $('#form_jour').val()
+            
+        };
+       
+       
+        $.ajax({
+            url:"<?php echo site_url('user/ajaxsearchHeures');?>",
+            type:"POST",
+            data:my_data1,
+            success: function(msg){
+                $('#heureSeance').html(msg);
+                
+            }
+            
+        });
+    });
+});
+</script>

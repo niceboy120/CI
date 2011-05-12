@@ -145,19 +145,7 @@ class User extends Controller {
         //end of function
     }
 
-    function page() {
-        $config['base_url'] = base_url() . '/user/index/';
-        $config['per_page'] = '15';
-        $config['first_link'] = 'الأول';
-        $config['last_link'] = 'الأخير';
-        $config['full_tag_open'] = '<p>';
-        $config['full_tag_close'] = '</p>';
-
-        $config['total_rows'] = $this->Agenda_model->getAgendaProf($infoUser['id']) * 60;
-        $this->pagination->initialize($config);
-
-        $data['agendaProf'] = $this->Agenda_model->getAgendaProf($infoUser['id'], $config['per_page'], $this->uri->segment(3));
-    }
+  
 
     /*
      * Pour ajouter  une séance à un cahier de texte
@@ -222,7 +210,24 @@ class User extends Controller {
         $this->session->unset_userdata('id_user_matiere');
         redirect('classe/index');
     }
+    /*
+     * Fonction Ajax
+     */
+    
+    function ajaxsearchJours(){
+        $id_classe= $this->input->post('id_classe');
+        $id_user= $this->session->userdata('id_user');
+        $data['jours'] = $this->Ajax_model->getJoursClasseProf($id_user,$id_classe);
+        $this->load->view('user/joursClasse',$data);
+    }
+     function ajaxsearchHeures(){
+        $id_classe= $this->input->post('id_classe');
+        $id_user= $this->session->userdata('id_user');
+        $joursemaine= $this->input->post('joursemaine');
+        $data['seances'] = $this->Ajax_model->getHeuresJour($id_user,$id_classe,$joursemaine);
+        $this->load->view('user/seanceJoursClasse',$data);
+    }
 
 }
 
-?>
+?> 
