@@ -13,8 +13,9 @@
         <link rel="stylesheet" type="text/css" href='<?php echo base_url(); ?>system/css/custom-theme/jquery-ui-1.8.1.custom.css' />
         <link rel="stylesheet" href='<?php echo base_url(); ?>system/css/validationEngine.jquery.css' type="text/css" media="screen" charset="utf-8" />
         <script src='<?php echo base_url(); ?>system/js/jquery-1.5.1.min.js' type="text/javascript"></script>
-        <script src='<?php echo base_url(); ?>system/js/jquery-ui-1.8.12.custom.min.js' type="text/javascript"></script>
-        <script src="j<?php echo base_url(); ?>system/js/jquery.contact.js" type="text/javascript"></script>
+        <script src='<?php echo base_url(); ?>system/js/jquery-ui-1.8.12.custom.min.js' type="text/javascript"></script>  
+        <script src='<?php echo base_url(); ?>system/js/jquery.ui.datepicker-fr.js' type="text/javascript"></script>  
+        <script src="<?php echo base_url(); ?>system/js/jquery.contact.js" type="text/javascript"></script>
         <script type="text/javascript" src="<?php echo $base_url; ?>system/js/tinymce/jquery.tinymce.js"></script>
         <script type="text/javascript">
             $(function() {

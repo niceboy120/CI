@@ -1,5 +1,12 @@
 <?php echo $this->tinyMce; ?>
-
+<script> 
+	$(function() {
+		$( "#datepicker" ).datepicker({
+                            dateFormat: 'dd/mm/yy'
+                });
+                jQuery.datepicker.setDefaults(jQuery.datepicker.regional['fr']);
+	});
+</script>
 
 <p class="erreur">
     <?php
@@ -9,6 +16,7 @@
     }
     ?>
 </p>
+
 <form  method="post" class="monForm" name="form1" action="<?php echo base_url(); ?>user/ajoutAgenda">
     <fieldset>
         <legend>إضافة حصة جديدة في دفتر النصوص :</legend>
@@ -30,6 +38,11 @@
         </label>
         
         <div id="joursClasse"></div>
+        <label for="form_dateseance"><span>تاريخ الحصة        :</span>
+            &nbsp;
+            <input type="text" id="datepicker"></input>
+        </label>
+        
         
         <div id="heureSeance"></div>
         <label for="form_titreActivite"><span>عنوان الحصة:</span>
@@ -96,3 +109,4 @@ $(document).ready(function() {
     
 });
 </script>
+
