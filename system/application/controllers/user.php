@@ -224,6 +224,7 @@ class User extends Controller {
         $id_classe= $this->input->post('id_classe');
         $id_user= $this->session->userdata('id_user');
         $joursemaine= $this->input->post('joursemaine');
+        
         $data['seances'] = $this->Ajax_model->getHeuresJour($id_user,$id_classe,$joursemaine);
         $this->load->view('user/seanceJoursClasse',$data);
     }

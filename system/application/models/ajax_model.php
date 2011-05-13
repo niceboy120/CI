@@ -36,7 +36,7 @@ class Ajax_model extends Model {
     function getHeuresJour($idprof, $idclasse, $joursemaine) {
         $data = array();
         
-        $this->db->select('heure_debut','heure_fin');
+        
         $array = array('id_prof' => $idprof, 'id_classe' => $idclasse,'jour_semaine' => $joursemaine);
         $this->db->where($array);
         $Q = $this->db->get('emploi');

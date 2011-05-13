@@ -94,24 +94,5 @@ $(document).ready(function() {
         });
     });
     
-    $('#form_jour').change(function() {
- 
-        var my_data1={
-            joursemaine : $('#form_jour').val()
-            
-        };
-       
-       
-        $.ajax({
-            url:"<?php echo site_url('user/ajaxsearchHeures');?>",
-            type:"POST",
-            data:my_data1,
-            success: function(msg){
-                $('#heureSeance').html(msg);
-                
-            }
-            
-        });
-    });
 });
 </script>
