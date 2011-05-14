@@ -27,7 +27,7 @@ class Agenda_model extends Model {
     function getAgendaClasse($id=0) {
         $data = array();
         $this->db->where('id_classe', $id);
-        $this->db->order_by("id_prof", "asc");
+        //$this->db->order_by("id_prof", "asc");
         $this->db->order_by("jour", "asc");
         $this->db->order_by("heureDebut", "asc");
         $Q = $this->db->get('agenda');
@@ -114,18 +114,18 @@ class Agenda_model extends Model {
         //////////////////////////////////////////////////////////////
         $TravailAfaire = $this->input->post('TravailAfaire');
         
-
+        
         $data = array(
             'id' => 0,
             'id_classe' => $this->input->post('classe', true),
             'id_prof' => $this->session->userdata('id_user'),
-            'id_type_activite' => $idtypeactivite,
-            'jour' => trim($this->input->post('jour', true)),
+            'id_type_activite' => $this->input->post('idtypeActivite'),
+            'jour' => $this->input->post('datepicker', true),
             'heureDebut' => $this->input->post('heureDebut', true),
             'heureFin' => $this->input->post('heureFin', true),
             'titreActivite' => $this->input->post('titreActivite', true),
             'activite' => $this->input->post('activite', true),
-            'travailAfaire' => $travailAfaire,
+            'travailAfaire' => $this->input->post('TravailAfaire'),
             'remarque' => $this->input->post('remarque', true)
         );
 

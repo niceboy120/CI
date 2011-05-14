@@ -2,10 +2,12 @@
 <script> 
 	$(function() {
 		$( "#datepicker" ).datepicker({
-                            dateFormat: 'dd/mm/yy'
+                            dateFormat: 'yy-mm-dd'
                 });
+                
                 jQuery.datepicker.setDefaults(jQuery.datepicker.regional['fr']);
 	});
+        
 </script>
 
 <p class="erreur">
@@ -40,7 +42,7 @@
         <div id="joursClasse"></div>
         <label for="form_dateseance"><span>تاريخ الحصة        :</span>
             &nbsp;
-            <input type="text" id="datepicker"></input>
+            <input type="text" id="datepicker" name="datepicker"></input>
         </label>
         
         
