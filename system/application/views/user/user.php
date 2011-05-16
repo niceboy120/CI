@@ -14,8 +14,7 @@
                 <li><a href="#tabs-2">ملء دفتر النصوص</a></li>
                 <li><a href="#tabs-3">مشاهدة - طباعة دفتر النصوص</a></li>
                 <li><a href="#tabs-4">كتابة جدول الحصص</a></li>
-                <li><a href="#tabs-5">تدبير أنواع الأنشطة</a></li>
-                <li><a href="#tabs-6">الإتصال بالمسؤول عن الموقع</a></li>
+                <li><a href="#tabs-5">الإتصال بالمسؤول عن الموقع</a></li>
             </ul>
             <div id="tabs-1">
                 <?php $this->load->view('user/informationsPerso'); ?>
@@ -35,9 +34,6 @@
 
             </div>
             <div id="tabs-5">
-
-            </div>
-            <div id="tabs-6">
 
                 <?php
                 $this->load->view('user/afficherContact');

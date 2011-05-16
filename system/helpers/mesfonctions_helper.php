@@ -16,4 +16,18 @@ if ( ! function_exists('objectToArray'))
     }
 }
 
+if ( ! function_exists('nomDate'))
+{
+    function nomDate( $date )
+    {
+        $jours = array ('الأحد', 'الإثنين', 'الثلاثاء','الأربعاء','الخميس','الجمعة','السبت');
+
+        // pour afficher le jour d'une date autre que celle d'aujourd'hui
+        // $passe = date ('w', mktime (0,0,0,7,6,2007));
+        $passe = date ('w', strtotime($date));
+        return $jours[$passe];
+        
+    }
+}
+
 ?>
