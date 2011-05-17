@@ -14,7 +14,7 @@
     <?php
     if ($this->session->userdata('opAgenda')) {
         echo $this->session->userdata('opAgenda');
-        $this->session->set_userdata('opAgenda', null);
+        //$this->session->set_userdata('opAgenda', null);
     }
     ?>
 </p>
@@ -23,10 +23,10 @@
     <fieldset>
         <legend>إضافة حصة جديدة في دفتر النصوص :</legend>
 
-        <label for="form_class"><span>القسم        :</span>
+        <label for="form_classA"><span>القسم        :</span>
             &nbsp;
             
-            <select id="form_classe" name="classe">
+            <select id="form_classeA" name="classeA">
                 <OPTION value='none'>المرجو اختيار القسم....</OPTION>
                 <?php
                 foreach ($classesProf as $k1) {
@@ -87,12 +87,12 @@
 </form>
 
 
-<script language="Javascript">
+<script type="text/javascript">
 $(document).ready(function() {
-    $('#form_classe').change(function() {
+    $('#form_classeA').change(function() {
  
         var my_data={
-            id_classe : $('#form_classe').val()
+            id_classe : $('#form_classeA').val()
             
         };
        

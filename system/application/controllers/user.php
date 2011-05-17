@@ -60,7 +60,7 @@ class User extends Controller {
         }
         $data['matieres'] = $mat;
         $data['classes'] = $this->Classe_model->getAllClasses();
-        $data['typeactivite']=$this->Typeactivite_model->getAllTypeActivite();
+        $data['typeactivite'] = $this->Typeactivite_model->getAllTypeActivite();
         $base_url = site_url('user/user/');
         $config['base_url'] = $base_url;
         $config['per_page'] = '10';
@@ -83,7 +83,7 @@ class User extends Controller {
                 $config['total_rows'] = count($this->Agenda_model->getAgendaProf($data['id_user']));
                 $this->pagination->initialize($config);
                 $data['agendaProf'] = $this->Agenda_model->getAgendaProfL($data['id_user'], $config['per_page'], (int) $this->uri->rsegment(3));
-                $data['classesProf']=$this->Emploi_model->getClassesProf($data['id_user']);
+                $data['classesProf'] = $this->Emploi_model->getClassesProf($data['id_user']);
                 $this->load->vars($data);
                 $this->load->view('user/user');
             }
@@ -104,7 +104,7 @@ class User extends Controller {
                 $this->session->set_userdata('id_user_matiere', $data['t']['0']->id_matiere);
                 $data['id_user'] = $this->session->userdata('id_user');
                 $data['emploi'] = $this->Emploi_model->getEmploiProf($this->session->userdata('id_user'));
-                $data['classesProf']=$this->Emploi_model->getClassesProf($this->session->userdata('id_user'));
+                $data['classesProf'] = $this->Emploi_model->getClassesProf($this->session->userdata('id_user'));
                 $data['plage'] = $this->Plage_model->getAllPlage();
                 if ($data['t']['0']->is_admin) {
                     $this->session->set_userdata('isadmin', TRUE);
@@ -145,8 +145,6 @@ class User extends Controller {
         //end of function
     }
 
-  
-
     /*
      * Pour ajouter  une séance à un cahier de texte
      */
@@ -166,6 +164,12 @@ class User extends Controller {
 
     function editA() {
         $this->Agenda_model->editAgenda();
+        redirect('user');
+    }
+    //////////// Pour supprimer une occurence du cahier de texte
+    function removeAgenda() {
+        $id = $this->uri->rsegment(3);
+        $this->Agenda_model->removeAgenda($id);
         redirect('user');
     }
 
@@ -210,23 +214,27 @@ class User extends Controller {
         $this->session->unset_userdata('id_user_matiere');
         redirect('classe/index');
     }
+
     /*
      * Fonction Ajax
      */
-    
-    function ajaxsearchJours(){
-        $id_classe= $this->input->post('id_classe');
-        $id_user= $this->session->userdata('id_user');
-        $data['jours'] = $this->Ajax_model->getJoursClasseProf($id_user,$id_classe);
-        $this->load->view('user/joursClasse',$data);
-    }
-     function ajaxsearchHeures(){
-        $id_classe= $this->input->post('id_classe');
-        $id_user= $this->session->userdata('id_user');
-        $joursemaine= $this->input->post('joursemaine');
+
+    function ajaxsearchJours() {
+        $id_classe = $this->input->post('id_classe');
+        $id_user = $this->session->userdata('id_user');
+        $data['jours'] = $this->Ajax_model->getJoursClasseProf($id_user, $id_classe);
         
-        $data['seances'] = $this->Ajax_model->getHeuresJour($id_user,$id_classe,$joursemaine);
-        $this->load->view('user/seanceJoursClasse',$data);
+        //print_r($data['jours']);
+        $this->load->view('user/joursClasse', $data);
+    }
+
+    function ajaxsearchHeures() {
+        $id_classe = $this->input->post('id_classe');
+        $id_user = $this->session->userdata('id_user');
+        $joursemaine = $this->input->post('joursemaine');
+        $data['seances'] = $this->Ajax_model->getHeuresJour($id_user, $id_classe, $joursemaine);
+        //print_r($data['seances']);
+        $this->load->view('user/seanceJoursClasse', $data);
     }
 
 }

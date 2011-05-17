@@ -48,7 +48,7 @@ class Agenda_model extends Model {
         $data = array();
         $this->db->where('id_classe', $idclasse);
         $this->db->where('id_prof', $idprof);
-        $this->db->order_by("jour", "asc");
+        $this->db->order_by("jour", "desc");
         $this->db->order_by("heureDebut", "asc");
         $Q = $this->db->get('agenda');
         if ($Q->num_rows() > 0) {
@@ -67,7 +67,7 @@ class Agenda_model extends Model {
     function getAgendaProf($id=0) {
         $data = array();
         $this->db->where('id_prof', $id);
-        $this->db->order_by("jour", "asc");
+        $this->db->order_by("jour", "desc");
         $this->db->order_by("heureDebut", "asc");
         $Q = $this->db->get('agenda');
         if ($Q->num_rows() > 0) {
@@ -86,7 +86,7 @@ class Agenda_model extends Model {
     function getAgendaProfL($id=0, $num= NULL, $offset = NULL) {
         $data = array();
         $this->db->where('id_prof', $id);
-        $this->db->order_by("jour", "asc");
+        $this->db->order_by("jour", "desc");
         $this->db->order_by("heureDebut", "asc");
         $this->db->limit($num, $offset);
         $Q = $this->db->get('agenda');
@@ -105,19 +105,9 @@ class Agenda_model extends Model {
 
     function addAgenda() {
 
-        /*
-         * Extraction de l'id du type de l'activité choisie
-         */
-        $idtypeactivite = $this->input->post('idtypeActivite');
-        
-        
-        //////////////////////////////////////////////////////////////
-        $TravailAfaire = $this->input->post('TravailAfaire');
-        
-        
         $data = array(
             'id' => 0,
-            'id_classe' => $this->input->post('classe', true),
+            'id_classe' => $this->input->post('classeA', true),
             'id_prof' => $this->session->userdata('id_user'),
             'id_type_activite' => $this->input->post('idtypeActivite'),
             'jour' => $this->input->post('datepicker', true),
@@ -136,36 +126,16 @@ class Agenda_model extends Model {
     //////////////////////////////
     function editAgenda() {
 
-        /*
-         * Extraction de l'id du type de l'activité choisie
-         */
-        $typeactivite = $this->input->post('typeactivite');
-        $sql1 = "SELECT id
-                FROM type_activite
-                WHERE nom ='" . $typeactivite . "' limit 1";
-        $query = $this->db->query($sql1);
-        foreach ($query->result() as $row) {
-            $data['m'][] = $row;
-        }
-        $idtypeactivite = $data['m']['0']->id;
-        //////////////////////////////////////////////////////////////
-        $contenuTravailAfaire = $this->input->post('contenuTravailAfaire');
-        if (isset($contenuTravailAfaire))
-            $travailAfaire = 1;
-        else
-            $travailAfaire=0;
-        //////////////////////////////////////////////
-        $data = array(
+       $data = array(
             'id' => $this->input->post('id', true),
             'id_classe' => $this->input->post('classe', true),
             'id_prof' => $this->session->userdata('id_user'),
-            'id_type_activite' => $idtypeactivite,
-            'id_matiere' => $this->session->userdata('id_user_matiere'),
+            'id_type_activite' => $this->input->post('idtypeActivite'),
             'jour' => $this->input->post('jour', true),
             'heureDebut' => $this->input->post('heureDebut', true),
             'heureFin' => $this->input->post('heureFin', true),
             'titreActivite' => $this->input->post('titreActivite', true),
-            'travailAfaire' => $travailAfaire,
+            'travailAfaire' => $this->input->post('TravailAfaire'),
             'activite' => $this->input->post('activite', true),
             'remarque' => $this->input->post('remarque', true)
         );

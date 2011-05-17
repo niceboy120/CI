@@ -1,4 +1,4 @@
-<label for="form_seance"><span>بداية الحصـــة     :</span>
+<label for="form_seanceDebut"><span>بداية الحصـــة     :</span>
     &nbsp;
     <select id="form_seanceDebut" name="heureDebut">
 
@@ -14,7 +14,7 @@
 </label>
 <label for="form_seanceFin"><span>نهاية الحصـــة     :</span>
     &nbsp;
-    <select id="form_seance" name="heureFin">
+    <select id="form_seanceFin" name="heureFin">
 
         <?php
         foreach ($seances as $k1) {
@@ -26,3 +26,4 @@
     </select>
 
 </label>
+

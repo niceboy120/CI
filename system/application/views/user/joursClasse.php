@@ -1,6 +1,6 @@
-<label for="form_jour"><span>اليوم        :</span>
+<label for="form_jourA"><span>اليوم        :</span>
     &nbsp;
-    <select id="form_jour" name="jour" >
+    <select id="form_jourA" name="jourA" >
         <OPTION value='none'>المرجو اختيار يوم الحصة....</OPTION>
         <?php foreach ($jours as $jour): ?>
             <OPTION value='<?php echo $jour->jour_semaine; ?>'><?php echo $jour->jour_semaine; ?></OPTION>
@@ -8,13 +8,13 @@
     </select>
 </label>
 
-<script language="Javascript">
+<script type="text/javascript">
 $(document).ready(function() {
-    $('#form_jour').change(function() {
+    $('#form_jourA').change(function() {
  
         var my_data1={
-            joursemaine : $('#form_jour').val(),
-            id_classe : $('#form_classe').val()
+            joursemaine : $('#form_jourA').val(),
+            id_classe : $('#form_classeA').val()
             
         };
         //alert(my_data1['joursemaine']);
