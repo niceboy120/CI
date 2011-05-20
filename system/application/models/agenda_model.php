@@ -115,7 +115,7 @@ class Agenda_model extends Model {
             'heureFin' => $this->input->post('heureFin', true),
             'titreActivite' => $this->input->post('titreActivite', true),
             'activite' => $this->input->post('activite', true),
-            'travailAfaire' => $this->input->post('TravailAfaire'),
+            'travailAfaire' => $this->input->post('travailAfaire'),
             'remarque' => $this->input->post('remarque', true)
         );
 

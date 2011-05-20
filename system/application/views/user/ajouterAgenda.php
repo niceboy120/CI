@@ -86,7 +86,6 @@
 </p>
 </form>
 
-
 <script type="text/javascript">
 $(document).ready(function() {
     $('#form_classeA').change(function() {
@@ -111,4 +110,3 @@ $(document).ready(function() {
     
 });
 </script>
-
