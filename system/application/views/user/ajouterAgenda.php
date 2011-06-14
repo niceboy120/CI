@@ -68,18 +68,18 @@
             &nbsp;
 
         </label>
-        <div align="center"><textarea id="activite" name="activite" style="width:98%;"></textarea></div>
+        <p align="center"><textarea id="activite" name="activite" style="width:98%;"></textarea></p>
         <label for="form_travailAfaire"><span>عمل للإنجاز في المنزل :</span>
             &nbsp;
 
         </label>
-        <div align="center"><textarea id="travailAfaire" name="travailAfaire" style="width:98%;"></textarea></div>
+        <p align="center"><textarea id="travailAfaire" name="travailAfaire" style="width:98%;"></textarea></p>
     
     <label for="form_remarque"><span>ملاحظات عامة:</span>
         &nbsp;
 
     </label>
-    <div align="center"><textarea id="remarque" name="remarque" style="width:98%;"></textarea></div>
+    <p align="center"><textarea id="remarque" name="remarque" style="width:98%;"></textarea></p>
 </fieldset>
 <p>
     <input type="submit" name="submit" value="إضافة الحصة"/>
