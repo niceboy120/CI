@@ -40,19 +40,19 @@
         </label>
         
         <div id="joursClasse"></div>
-        <label for="form_dateseance"><span>تاريخ الحصة        :</span>
-            &nbsp;
-            <input type="text" id="datepicker" name="datepicker"></input>
+        <label for="form_dateseance"><span>تاريخ الحصة   :</span>
+            
+            <input type="text" id="datepicker" name="datepicker" />
         </label>
         
         
         <div id="heureSeance"></div>
-        <label for="form_titreActivite"><span>عنوان الحصة:</span>
-            &nbsp;
-            <input type="text" id="titreActivite" name="titreActivite"></input>
+        <label for="form_titreActivite"><span>عنوان الحصة     :</span>
+            
+            <input type="text" id="titreActivite" name="titreActivite" />
         </label>
         <label for="form_typeActivite"><span>نوع الحصة:</span>
-            &nbsp;
+            
             <select id="form_typeActivite" name="idtypeActivite">
 
                 <?php

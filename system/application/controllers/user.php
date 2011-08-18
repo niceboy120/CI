@@ -38,8 +38,9 @@ class User extends Controller {
                                         theme_advanced_toolbar_location : "top",
                                         theme_advanced_toolbar_align : "left",
                                         theme_advanced_statusbar_location : "bottom",
-                                        theme_advanced_resizing : true,
-
+                                        theme_advanced_resizing : false,
+                                        height:"400px",
+                                        
                                         // Drop lists for link/image/media/template dialogs
                                         template_external_list_url : "lists/template_list.js",
                                         external_link_list_url : "lists/link_list.js",
@@ -157,13 +158,15 @@ class User extends Controller {
     ////////////////////Modifier une séance dans un emploi 
     function editAgenda() {
         $data['id_agenda'] = $this->uri->rsegment(3);
-        // $data['plage']=$this->Plage_model->getAllPlage();
-        //$data['classes']=$this->Classe_model->getAllClasses();
+        $data['plage']=$this->Plage_model->getAllPlage();
+        $data['classesProf'] = $this->Emploi_model->getClassesProf($this->session->userdata('id_user'));
+        $data['agenda']=$this->Agenda_model->getAgendaByID($data['id_agenda']);
         $this->load->view('user/editAgenda', $data);
     }
 
     function editA() {
         $this->Agenda_model->editAgenda();
+        //var_dump($this->input->post('travailAfaire', true));
         redirect('user');
     }
     //////////// Pour supprimer une occurence du cahier de texte

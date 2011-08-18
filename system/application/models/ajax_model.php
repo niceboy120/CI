@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class Ajax_model extends Model {
 

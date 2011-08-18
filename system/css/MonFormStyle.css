@@ -129,7 +129,7 @@
 
 .monForm input[type="submit"]:hover
 {
-	font-family: Arial,Trebuchet, Tahoma
+	font-family: Arial,Trebuchet, Tahoma;
 	font-size: 1.4em;
 	background-color: #DDEEDD;
 	cursor: pointer;

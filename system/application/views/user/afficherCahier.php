@@ -13,7 +13,9 @@ $infoUser = $this->session->userdata('InfoUser');
     }
     ?>
 </p>
-
+<p style="text-align: center;font-size: 14px;font-weight: bolder;color: rgb(250,0,120);">
+        طباعة دفتر النصوص           
+    </p>
 
 <?php 
      

@@ -1,4 +1,4 @@
-﻿<?php include "header.php" ; ?>
+<?php include "header.php" ; ?>
 <div id="content-wrap">
 
 <!-- ici commence le contenu -->

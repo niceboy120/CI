@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
  * @property CI_Loader $load
@@ -39,7 +39,24 @@ class Agenda_model extends Model {
         $Q->free_result();
         return $data;
     }
-
+    
+     /*
+     * Fonction pour récupérer la séance depuis le cahier de texte d'une classe pour une matière spécifique(prof)
+     */
+    function getAgendaByID($idagenda=0)
+    {
+        $data = array();
+        $this->db->where('id', $idagenda);
+        $Q = $this->db->get('agenda');
+        if ($Q->num_rows() > 0) {
+            foreach ($Q->result_array() as $row) {
+                $data[] = $row;
+            }
+        }
+        $Q->free_result();
+        return $data[0];
+        
+    }
     /*
      * Fonction pour récupérer le cahier de texte d'une classe pour une matière spécifique(prof)
      */
@@ -128,14 +145,14 @@ class Agenda_model extends Model {
 
        $data = array(
             'id' => $this->input->post('id', true),
-            'id_classe' => $this->input->post('classe', true),
+            'id_classe' => $this->input->post('classeA', true),
             'id_prof' => $this->session->userdata('id_user'),
             'id_type_activite' => $this->input->post('idtypeActivite'),
             'jour' => $this->input->post('jour', true),
             'heureDebut' => $this->input->post('heureDebut', true),
             'heureFin' => $this->input->post('heureFin', true),
             'titreActivite' => $this->input->post('titreActivite', true),
-            'travailAfaire' => $this->input->post('TravailAfaire'),
+            'travailAfaire' => $this->input->post('travailAfaire'),
             'activite' => $this->input->post('activite', true),
             'remarque' => $this->input->post('remarque', true)
         );

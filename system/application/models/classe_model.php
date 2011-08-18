@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class Classe_model extends Model {
 
      function Classe_model()

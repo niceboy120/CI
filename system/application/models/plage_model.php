@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * @property CI_Loader $load
  * @property CI_Form_validation $form_validation
