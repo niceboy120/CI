@@ -70,6 +70,7 @@
                 <p><label for="form_typeActivite"><span>نوع الحصة:</span>
                         &nbsp;
                         <select id="form_typeActivite" name="idtypeActivite">
+                            <option selected value="<?php echo $agenda['id_type_activite']; ?>"><?php echo $this->Typeactivite_model->getTypeNomByID($agenda['id_type_activite']); ?></option>
                             <?php
                             foreach ($typeactivite as $k1 => $list) {
                                 echo "<OPTION value='   " . $list['id'] . "'>";
@@ -126,17 +127,9 @@
     
             });
         </script>
-        <form id="formID" class="monForm" action="<?php echo base_url(); ?>user/removeAgenda/<?php
-                            echo $id_agenda;
-                            ?>" method="post">
-            <label for="id">
-                <input type="hidden" name="id" value="<?php
-        echo $id_emploi;
-                            ?>" >
-            </label>
-            <p><input class="submit" type="submit" name="submit" value="حذف الحصة"></p>
+                   
             <p><?php echo anchor('user', 'العودة إلى صفحة التدبير'); ?></p>
-        </form>
+        
     </div>
 
     <!-- ici se termine le contenu -->
